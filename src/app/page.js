@@ -4,96 +4,59 @@ import Link from "next/link";
 import "../styles/home.css"; // Import external styles
 
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFeed, setActiveFeed] = useState("discovery");
 
-  // 🔹 Dynamic AI Listings (Can be moved to a database later)
-  const featuredAI = [
-    { id: 1, name: "📊 WorkMate", description: "AI for workflow automation", link: "/solutions/workmate" },
-    { id: 2, name: "✍️ WriteEase", description: "AI for writing & blogging", link: "/solutions/writeease" },
+  // 🔹 AI Listings (Can be moved to a database later)
+  const discoveryFeed = [
+    { id: 1, title: "📊 WorkMate", type: "Featured AI Tool", link: "/solutions/workmate" },
+    { id: 2, title: "✍️ WriteEase", type: "AI Writing Assistant", link: "/solutions/writeease" },
   ];
 
-  const requestedAI = [
-    { id: 3, name: "🎨 AI Logo Maker", description: "User requested AI-powered logo generation" },
-    { id: 4, name: "📷 AI Video Editor", description: "User requested AI-based video editing assistant" },
+  const requestsFeed = [
+    { id: 3, title: "🎨 AI Logo Maker", type: "User Requested AI Tool" },
+    { id: 4, title: "📷 AI Video Editor", type: "User Requested AI Tool" },
   ];
 
-  const submittedAI = [
-    { id: 5, name: "🤖 ChatFlow", description: "AI chatbot assistant", link: "/solutions/chatflow" },
-    { id: 6, name: "📜 CodeLogic", description: "AI-driven coding & debugging", link: "/solutions/codelogic" },
+  const submissionsFeed = [
+    { id: 5, title: "🤖 ChatFlow", type: "New AI Tool Submission", link: "/solutions/chatflow" },
+    { id: 6, title: "📜 CodeLogic", type: "New AI Tool Submission", link: "/solutions/codelogic" },
   ];
+
+  const feedData = {
+    discovery: discoveryFeed,
+    requests: requestsFeed,
+    submissions: submissionsFeed,
+  };
 
   return (
     <main className="container">
       {/* Navigation Bar */}
       <nav className="navbar">
-        <h1 className="logo">AI Solutions Hub</h1>
+        <h1 className="logo">AI Community Hub</h1>
         <ul className="navLinks">
           <li><Link href="/">Home</Link></li>
-          <li><Link href="/discover">Discover</Link></li>
-          <li><Link href="/requests">Requests</Link></li>
-          <li><Link href="/submissions">Submissions</Link></li>
           <li><Link href="/profile">Profile</Link></li>
+          <li><Link href="/submit">Submit</Link></li>
         </ul>
       </nav>
 
-      {/* Hero Section */}
-      <section className="hero">
-        <h1>🚀 Welcome to the AI Solutions Hub</h1>
-        <p>Discover, request, and submit AI-powered tools in real time.</p>
-        <div>
-          <Link href="/submit"><button className="button">Submit Your AI Tool</button></Link>
-          <Link href="/request"><button className="button">Request an AI Tool</button></Link>
-        </div>
-      </section>
+      {/* Toggle Feeds */}
+      <div className="feedToggle">
+        <button className={activeFeed === "discovery" ? "active" : ""} onClick={() => setActiveFeed("discovery")}>Discovery</button>
+        <button className={activeFeed === "requests" ? "active" : ""} onClick={() => setActiveFeed("requests")}>Requests</button>
+        <button className={activeFeed === "submissions" ? "active" : ""} onClick={() => setActiveFeed("submissions")}>Submissions</button>
+      </div>
 
-      {/* 🔎 Search Bar */}
-      <section className="searchSection">
-        <input
-          type="text"
-          placeholder="Search AI tools..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="searchBar"
-        />
-      </section>
-
-      {/* 🔥 Live Feeds */}
-      <section className="liveFeeds">
-        {/* Featured AI Solutions */}
-        <div className="feedSection">
-          <h2>🔝 Featured AI Solutions</h2>
-          {featuredAI.map((item) => (
-            <div key={item.id} className="postCard">
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <Link href={item.link}><button className="button">Explore</button></Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Recently Requested AI Tools */}
-        <div className="feedSection">
-          <h2>📌 Recently Requested AI Tools</h2>
-          {requestedAI.map((item) => (
-            <div key={item.id} className="postCard">
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <button className="button">Upvote Request</button>
-            </div>
-          ))}
-        </div>
-
-        {/* Latest AI Submissions */}
-        <div className="feedSection">
-          <h2>🚀 Latest AI Submissions</h2>
-          {submittedAI.map((item) => (
-            <div key={item.id} className="postCard">
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <Link href={item.link}><button className="button">Explore</button></Link>
-            </div>
-          ))}
-        </div>
+      {/* Live Feed Section */}
+      <section className="liveFeed">
+        {feedData[activeFeed].map((post) => (
+          <div key={post.id} className="postCard">
+            <h3>{post.title}</h3>
+            <p>{post.type}</p>
+            {post.link && <Link href={post.link}><button className="button">Explore</button></Link>}
+            {!post.link && <button className="button">Upvote</button>}
+          </div>
+        ))}
       </section>
     </main>
   );
