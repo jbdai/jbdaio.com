@@ -1,92 +1,67 @@
-/* General Page Styles */
+/* General Layout */
 .container {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Navigation Bar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #007bff;
-    color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .navLinks {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-  }
-  
-  /* Hero Section */
-  .hero {
-    padding: 60px;
-    background-color: #f8f9fa;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-  
-  /* Buttons */
-  .button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    transition: 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Search Bar */
-  .searchSection {
-    text-align: center;
-    margin: 30px 0;
-  }
-  
-  .searchBar {
-    width: 60%;
-    max-width: 400px;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .searchBar:focus {
-    border-color: #0056b3;
-    box-shadow: 0px 0px 5px rgba(0, 91, 187, 0.5);
-  }
-  
-  /* AI Solutions Grid */
-  .solutionsGrid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+  font-family: Arial, sans-serif;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #007bff;
+  color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+/* Hero Section */
+.hero {
+  padding: 60px;
+  background-color: #f8f9fa;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/* Search Bar */
+.searchSection {
+  margin: 30px 0;
+}
+
+.searchBar {
+  width: 60%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+}
+
+/* Live Feeds */
+.liveFeeds {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feedSection {
+  flex: 1;
+  min-width: 300px;
+}
+
+.postCard {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 10px;
+  text-align: left;
+}
