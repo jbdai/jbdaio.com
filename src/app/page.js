@@ -1,9 +1,9 @@
 "use client"; // Enables client-side interactivity
 import { useState } from "react";
+import Link from "next/link"; // Import Next.js Link
 import "../styles/home.css"; // Import external styles
 
 export default function Home() {
-  // 🔹 AI Solutions Listing (Stored as an Array)
   const aiSolutions = [
     { id: 1, name: "📊 WorkMate", description: "AI-powered assistant for automation.", link: "/solutions/workmate" },
     { id: 2, name: "✍️ WriteEase", description: "AI-driven content writing & blogging.", link: "/solutions/writeease" },
@@ -14,7 +14,6 @@ export default function Home() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 🔹 Filter AI Solutions Based on Search Input
   const filteredSolutions = aiSolutions.filter((solution) =>
     solution.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -25,11 +24,11 @@ export default function Home() {
       <nav className="navbar">
         <h1 className="logo">AI Tools Directory</h1>
         <ul className="navLinks">
-          <li><a href="/">Home</a></li>
-          <li><a href="/solutions">Solutions</a></li>
-          <li><a href="/request">Request AI</a></li>
-          <li><a href="/submit">Submit AI</a></li>
-          <li><a href="/pricing">Pricing</a></li>
+          <li><Link href="/">Home</Link></li>
+          <li><Link href="/solutions">Solutions</Link></li>
+          <li><Link href="/request">Request AI</Link></li>
+          <li><Link href="/submit">Submit AI</Link></li>
+          <li><Link href="/pricing">Pricing</Link></li>
         </ul>
       </nav>
 
@@ -38,8 +37,8 @@ export default function Home() {
         <h1>🚀 AI Solutions Directory</h1>
         <p>Explore AI-powered tools designed for automation, content, finance, and more.</p>
         <div>
-          <a href="/solutions"><button className="button">Browse All AI Tools</button></a>
-          <a href="/submit"><button className="button">Submit Your AI Tool</button></a>
+          <Link href="/solutions"><button className="button">Browse All AI Tools</button></Link>
+          <Link href="/submit"><button className="button">Submit Your AI Tool</button></Link>
         </div>
       </section>
 
@@ -63,7 +62,7 @@ export default function Home() {
               <div key={solution.id} className="card">
                 <h3>{solution.name}</h3>
                 <p>{solution.description}</p>
-                <a href={solution.link}><button className="button">Learn More</button></a>
+                <Link href={solution.link}><button className="button">Learn More</button></Link>
               </div>
             ))
           ) : (
